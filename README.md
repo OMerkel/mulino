@@ -7,6 +7,10 @@
 **Mulino** - *Nine Men's Morris, a 2 player abstract strategic perfect
 information traditional board game with computer AI option.*
 
+## Play Online
+
+- [Start game now...](https://omerkel.github.io/mulino/html5/src/)
+
 ## Abstract
 
 *Mulino is a board game demonstrator with computer AI using Monte-Carlo

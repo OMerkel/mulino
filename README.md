@@ -246,7 +246,7 @@ Design and rationale:
       alt="Oliver Merkel, Creative Commons License, This image is licensed under
         a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0
         International License."
-      src="html5/src/img/oliver_fanore-150809.jpg" /></td>
+      src="html5/src/img/oliver_saar_kastel_staadt_260924.jpg" /></td>
   </tr>
 </table>
 

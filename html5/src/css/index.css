@@ -1,0 +1,254 @@
+.upsidedown {
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.ui-btn-icon-notext:after {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.customMenu {
+  background: url(../img/icons/icon-bars.svg) 50% 50% no-repeat;
+  left: 50%;
+  top: 50%;
+}
+
+.customBack {
+  background: url(../img/icons/icon-delete.svg) 50% 50% no-repeat;
+  left: 50%;
+  top: 50%;
+}
+
+.active-player {
+  position: absolute;
+  top: 7px;
+  right: 0.75rem;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  min-width: 4rem;
+  height: 2rem;
+  padding: 0 0.45rem;
+  overflow: hidden;
+  border: 1px solid #efb366;
+  border-radius: 0.4rem;
+  background-color: #171717;
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+  text-align: center;
+  text-shadow: none;
+  white-space: nowrap;
+}
+
+.active-player-spinner {
+  box-sizing: border-box;
+  width: 0.65rem;
+  height: 0.65rem;
+  flex: 0 0 auto;
+  border: 2px solid #666;
+  border-top-color: #efb366;
+  border-radius: 50%;
+  animation: active-player-spin 800ms linear infinite;
+}
+
+@keyframes active-player-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ui-btn-icon-notext.ui-corner-all {
+  border-radius: 20em;
+}
+
+.ui-btn {
+  border-width: 0px;
+  border-style: none;
+}
+
+.mybackground {
+  background: url(../img/background.jpg);
+}
+
+#game-page {
+  box-sizing: border-box;
+  height: 100vh;
+  min-height: 0;
+  overflow: hidden;
+}
+
+#board {
+  position: relative;
+}
+
+.winning-celebration {
+  position: fixed;
+  top: calc(var(--game-title-bar-height, 4rem) + 0.25rem);
+  left: 50%;
+  z-index: 2;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: 82%;
+  padding: 0.65rem 1rem;
+  border: 1px solid #efb366;
+  border-radius: 0.5rem;
+  background-color: #171717;
+  color: #fff;
+  opacity: 0.7;
+  text-align: center;
+  text-shadow: none;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.winning-celebration[hidden] {
+  display: none;
+}
+
+.winning-celebration strong,
+.winning-celebration span {
+  display: block;
+}
+
+@supports (height: 100dvh) {
+  #game-page {
+    height: 100dvh;
+  }
+}
+
+.mulino-paper .board-background {
+  fill: #d9b47a;
+  stroke: #6b4423;
+  stroke-width: 0.04;
+}
+
+.mulino-paper .board-line {
+  stroke: #3b2410;
+  stroke-width: 0.06;
+  stroke-linecap: round;
+}
+
+.mulino-paper .board-dot {
+  fill: #3b2410;
+}
+
+.mulino-paper .board-notation text {
+  fill: #3b2410;
+  font-family: sans-serif;
+  font-size: 0.28px;
+  text-anchor: middle;
+}
+
+.mulino-paper image.selectable-source,
+.mulino-paper image.removable,
+.mulino-paper rect[data-point] {
+  cursor: pointer;
+}
+
+.mulino-paper circle.selectable-source-ring {
+  fill: none;
+  stroke: #a6ff8f;
+  stroke-width: 0.1;
+  pointer-events: none;
+}
+
+.mulino-paper circle.selected-source-ring {
+  stroke: #62bd52;
+}
+
+.mulino-paper circle.removable-ring {
+  fill: none;
+  stroke: #ff3b30;
+  stroke-width: 0.1;
+  pointer-events: none;
+}
+
+.mulino-paper circle.last-move-ring {
+  fill: none;
+  stroke: #83d9ff;
+  stroke-width: 0.05;
+  pointer-events: none;
+}
+
+.mulino-paper circle.last-move-source {
+  stroke-dasharray: 0.12 0.08;
+}
+
+#abouttitle {
+  width: 100%;
+  max-width: 500px;
+}
+
+pre.board-diagram {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid #cccccc;
+  border-radius: 7px;
+  font-family: monospace;
+  line-height: 1.2;
+}
+
+figure.diagram {
+  width: 30%;
+  border: 1px solid #cccccc;
+  margin: 0 10px 0 10px;
+  padding: 2px 12px 2px 2px;
+  border-radius: 11px;
+}
+
+figure.diagram img {
+  width: 100%;
+  border: 1px solid #cccccc;
+  padding: 4px;
+  border-radius: 7px 7px 0 0;
+  margin: 0px;
+}
+
+figure.diagram figcaption {
+  background-color: #666;
+  color: #fff;
+  font-style: italic;
+  width: 100%;
+  padding: 5px;
+  border-radius: 0 0 8px 8px;
+  margin: 0px;
+}
+
+figure.author {
+  width: 30%;
+  max-width: 240px;
+  border: 1px solid #cccccc;
+  margin: 0 2px 0 2px;
+  padding: 2px 12px 2px 2px;
+  border-radius: 11px;
+}
+
+figure.author img {
+  width: 100%;
+  border: 1px solid #cccccc;
+  padding: 4px;
+  border-radius: 7px 7px 0 0;
+  margin: 0px;
+}
+
+figure.author embed {
+  width: 100%;
+  border: 1px solid #cccccc;
+  padding: 4px;
+  border-radius: 7px 7px 0 0;
+  margin: 0px;
+}
+
+figure.author figcaption {
+  background-color: #666;
+  color: #fff;
+  font-style: italic;
+  width: 100%;
+  padding: 5px;
+  border-radius: 0 0 8px 8px;
+  margin: 0px;
+}

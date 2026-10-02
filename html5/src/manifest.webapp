@@ -1,0 +1,22 @@
+{
+  "version": "0.2",
+  "name": "Mulino",
+  "description": "Nine Men's Morris board game with optional AI",
+  "launch_path": "/index.html",
+  "icons": {
+    "16": "/img/icons/mulino16.png",
+    "32": "/img/icons/mulino32.png",
+    "48": "/img/icons/mulino48.png",
+    "60": "/img/icons/mulino60.png",
+    "64": "/img/icons/mulino64.png",
+    "90": "/img/icons/mulino90.png",
+    "120": "/img/icons/mulino120.png",
+    "128": "/img/icons/mulino128.png",
+    "256": "/img/icons/mulino256.png"
+  },
+  "developer": {
+    "name": "Oliver Merkel",
+    "url": "https://github.com/OMerkel/mulino"
+  },
+  "installs_allowed_from": ["*"]
+}

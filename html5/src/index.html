@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head profile='http://dublincore.org/documents/dcq-html/'>
+  <link rel='icon' href='img/icons/mulino.svg' type='image/svg+xml' />
+  <link rel='icon' href='img/icons/mulino32.png' type='image/png' sizes='32x32' />
+  <link rel='schema.DC' href='http://purl.org/dc/elements/1.1/' />
+  <link rel='schema.DCTERMS' href='http://purl.org/dc/terms/' />
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+  <meta charset='UTF-8' />
+  <meta name='AUTHOR' content='Oliver Merkel' />
+  <meta name='COPYRIGHT' content='Oliver Merkel' />
+  <meta name='DC.creator' content='Oliver Merkel' />
+  <meta name='DC.contributor' content='Oliver Merkel' />
+  <meta name='DC.rights' content="
+See file named LICENSE being part of the repository.
+
+Copyright (c) 2016-2026
+@author Oliver Merkel, Merkel(dot)Oliver(at)web(dot)de.
+All rights reserved.
+
+Logos, brands, and trademarks belong to their respective owners.
+
+All source code also including code parts written in HMTL, Javascript, CSS is under MIT License.
+
+The MIT License (MIT)
+
+Copyright (c) 2016-2026 Oliver Merkel, Merkel(dot)Oliver(at)web(dot)de
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the &quot;Software&quot;), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+If not otherwise stated all graphics (independent of its format) are licensed under
+    http://creativecommons.org/licenses/by-nc-sa/4.0
+    Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+" />
+  <title>Mulino</title>
+  <meta name='apple-mobile-web-app-capable' content='yes' />
+  <meta name='apple-mobile-web-app-status-bar-style' content='black' />
+  <link rel='apple-touch-icon' href='img/icons/mulino128.png' />
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
+    name='viewport' />
+  <link rel='stylesheet' type='text/css' href='css/theme.css' />
+  <link rel='stylesheet' type='text/css' href='css/index.css' />
+  <script src='js/ui/main.js' type='module'></script>
+</head>
+<body>
+<div id='game-page'
+  class='mybackground ui-page ui-page-theme-b ui-page-header-fixed ui-page-active'>
+  <div class='ui-header ui-bar-inherit ui-header-fixed'>
+    <center id='myheader'>Mulino</center>
+    <a href='#left-panel' id='customMenu'
+      class='customMenu ui-btn ui-btn-icon-notext ui-corner-all ui-btn-left'>Menu</a>
+    <span id='active-player' class='active-player' role='status' aria-live='polite'
+      aria-label='Human Player ○, 9 in hand' title='Human Player ○, 9 in hand'>
+      <span class='active-player-spinner' aria-hidden='true'></span>
+      <span class='active-player-symbol' aria-hidden='true'>&#x1F9D1;&#x25CB;9</span>
+    </span>
+  </div><!-- /header -->
+  <main class='mycontent ui-content'>
+    <noscript>
+      <p>This HTML5 application depends on enabled Javascript capabilities in your browser.</p>
+      <p>Please consider enabling Javascript if disabled through settings.</p>
+    </noscript>
+    <center><div id='board'></div></center>
+  </main><!-- /content -->
+  <div id='left-panel'
+    class='ui-panel ui-panel-position-left ui-panel-display-overlay ui-panel-animate ui-body-b ui-panel-closed'>
+    <div class='ui-panel-inner'>
+      <ul class='ui-listview jqm-list'>
+        <li class='ui-first-child'><a href='#game-page' data-rel='close'
+          class='ui-btn ui-btn-icon-right ui-icon-back'>Back</a></li>
+        <li class='ui-li-divider ui-bar-d'>&nbsp;</li>
+        <li><a id='new' href='#game-page'
+          class='ui-btn ui-btn-icon-right ui-icon-star'>New</a></li>
+        <li class='ui-li-divider ui-bar-d'>&nbsp;</li>
+        <li><a href='#rules-page' data-rel='page' data-transition='pop'
+          class='ui-btn ui-btn-icon-right ui-icon-action'>Rules&#8230;</a></li>
+        <li><a href='#options-menu' data-rel='page' data-transition='slideup'
+          class='ui-btn ui-btn-icon-right ui-icon-grid'>Options&#8230;</a></li>
+        <li class='ui-last-child'><a href='#about-page' data-rel='page' data-transition='pop'
+          class='ui-btn ui-btn-icon-right ui-icon-info'>About&#8230;</a></li>
+      </ul>
+    </div>
+  </div><!-- /panel -->
+  <div class='ui-panel-dismiss ui-panel-dismiss-position-left'></div>
+</div><!-- /page -->
+<div id='rules-page' class='ui-page ui-page-theme-b'>
+  <div class='ui-header ui-bar-inherit'>
+    <a href='#game-page' data-rel='back' id='customBackRules'
+      class='customBack ui-btn ui-icon-custom ui-btn-icon-right ui-btn-icon-notext ui-corner-all ui-btn-left'>Back</a>
+    <h4 class='ui-title'>Rules</h4>
+  </div><!-- /header -->
+  <main class='ui-content'>
+    <br />
+    <p><b>Nine Men's Morris</b> (also called Mill, Merels, Mulino, Moulin or Mühle)
+      is a classic two-player strategy board game.</p>
+    <h2>Objective</h2>
+    <p>Reduce your opponent to <b>fewer than 3 pieces</b>, or leave them with
+      <b>no legal moves</b>.</p>
+    <h2>Components</h2>
+    <ul>
+      <li>A board with <b>24 intersecting points</b> arranged in three concentric
+        squares connected by lines.</li>
+      <li><b>9 pieces per player</b>, white and black.</li>
+    </ul>
+    <pre class='board-diagram'>7 +--------+--------+
+  |        |        |
+6 |  +-----+-----+  |
+  |  |     |     |  |
+5 |  |  +--+--+  |  |
+  |  |  |     |  |  |
+4 +--+--+     +--+--+
+  |  |  |     |  |  |
+3 |  |  +--+--+  |  |
+  |  |     |     |  |
+2 |  +-----+-----+  |
+  |        |        |
+1 +--------+--------+
+  a  b  c  d  e  f  g</pre>
+    <p>Each point is identified by a column letter (a to g) and a row number
+      (1 to 7). Only the 24 points where lines meet exist. The three points
+      a7, d7 and g7, for example, form a <b>mill</b>.</p>
+    <h2>Phase 1 – Placing Pieces</h2>
+    <ul>
+      <li><b>White</b> places first; then players alternate placing one piece
+        per turn onto any empty point.</li>
+      <li>Each time you form a <b>mill</b> (3 of your pieces in a row along a
+        line), you <b>must remove one of your opponent's pieces</b> from the
+        board.
+        <ul>
+          <li>Closing two mills at once with a single piece still removes only
+            <b>one</b> piece.</li>
+          <li>You <b>cannot</b> remove a piece that is part of a mill
+            <em>unless no other pieces are available</em>.</li>
+          <li><em>Optional rule</em> (agree before playing): if all of your
+            opponent's pieces are part of mills, no piece is removed and the
+            turn simply passes to your opponent.</li>
+        </ul>
+      </li>
+    </ul>
+    <h2>Phase 2 – Moving Pieces</h2>
+    <ul>
+      <li>Once all 18 pieces are placed, players alternate <b>sliding</b> one
+        piece at a time to an <b>adjacent empty point</b> along a line.</li>
+      <li>Forming a mill still requires you to remove an opponent's piece
+        (same removal rules as above).</li>
+      <li>A mill can be <b>broken and reformed</b> to repeatedly capture
+        pieces.</li>
+    </ul>
+    <h2>Phase 3 – Flying</h2>
+    <ul>
+      <li>A player reduced to <b>exactly 3 pieces</b> may <b>jump</b> their
+        pieces to <em>any</em> empty point on the board (not just adjacent
+        ones).</li>
+      <li>This is optional in some rule sets — confirm before playing.</li>
+    </ul>
+    <h2>Losing Conditions</h2>
+    <p>A player <b>loses</b> if reduced to <b>fewer than 3 pieces</b>, or if
+      <b>no legal moves</b> are left.</p>
+    <h2>Draw</h2>
+    <p>The game ends immediately in a <b>draw</b> when the same position occurs
+      for the <b>third time</b>: the same pieces on the same points and the same
+      player to move. Repetitions are only counted once all pieces have been
+      placed. The repetitions do not need to be consecutive.</p>
+    <p>The Options page selects whether flying is allowed and how a mill is
+      handled when every opponent piece stands in a mill.</p>
+    <br clear='all' />
+    <p>Have fun and enjoy the game&#8230;</p>
+    <a href='#game-page' data-rel='back'
+      class='ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back'>Back</a>
+  </main><!-- /content -->
+</div><!-- /page -->
+
+<div id='options-menu' class='ui-page ui-page-theme-b'>
+  <div class='ui-header ui-bar-inherit'>
+    <h1 class='ui-title'><small>Options</small></h1>
+    <a href='#game-page' data-rel='back' id='customBackOptions'
+      class='customBack ui-btn ui-icon-custom ui-btn-icon-left ui-btn-icon-notext ui-corner-all ui-btn-left'>Close</a>
+  </div><!-- /header -->
+  <div class='ui-content'>
+    <br />
+    <br />
+    <form>
+      <i>Mind: All selections will be applied on next move or new game.</i>
+      <fieldset class='ui-controlgroup ui-controlgroup-vertical ui-corner-all'>
+        <div class='ui-controlgroup-label'>
+          <legend>Player ○ (White) is played by&#8230;</legend>
+        </div>
+        <div class='ui-controlgroup-controls'>
+          <div class='ui-radio ui-first-child'>
+            <label for='playerwhitehuman'
+              class='ui-btn ui-corner-all ui-btn-icon-left ui-radio-on'>Human</label>
+            <input name='playerwhite' id='playerwhitehuman'
+              checked='checked' type='radio'>
+          </div>
+          <div class='ui-radio ui-last-child'>
+            <label for='playerwhiteai'
+              class='ui-btn ui-corner-all ui-btn-icon-left ui-radio-off'>AI</label>
+            <input name='playerwhite' id='playerwhiteai'
+              type='radio'>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class='ui-controlgroup ui-controlgroup-vertical ui-corner-all'>
+        <div class='ui-controlgroup-label'>
+          <legend>Player ● (Black) is played by&#8230;</legend>
+        </div>
+        <div class='ui-controlgroup-controls'>
+          <div class='ui-radio ui-first-child'>
+            <label for='playerblackhuman'
+              class='ui-btn ui-corner-all ui-btn-icon-left ui-radio-on'>Human</label>
+            <input name='playerblack' id='playerblackhuman'
+              checked='checked' type='radio'>
+          </div>
+          <div class='ui-radio ui-last-child'>
+            <label for='playerblackai'
+              class='ui-btn ui-corner-all ui-btn-icon-left ui-radio-off'>AI</label>
+            <input name='playerblack' id='playerblackai'
+              type='radio'>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class='ui-controlgroup ui-controlgroup-vertical ui-corner-all'>
+        <div class='ui-controlgroup-label'>
+          <legend>Flying with exactly three pieces is&#8230;</legend>
+        </div>
+        <div class='ui-controlgroup-controls'>
+          <div class='ui-radio ui-first-child'>
+            <label for='flyingAllowed'
+              class='ui-btn ui-corner-all ui-btn-icon-left ui-radio-on'>allowed</label>
+            <input name='flying' id='flyingAllowed'
+              checked='checked' type='radio'>
+          </div>
+          <div class='ui-radio ui-last-child'>
+            <label for='flyingForbidden'
+              class='ui-btn ui-corner-all ui-btn-icon-left ui-radio-off'>not allowed</label>
+            <input name='flying' id='flyingForbidden'
+              type='radio'>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class='ui-controlgroup ui-controlgroup-vertical ui-corner-all'>
+        <div class='ui-controlgroup-label'>
+          <legend>When closing your own mill while every opponent piece stands in a mill then you&#8230;</legend>
+        </div>
+        <div class='ui-controlgroup-controls'>
+          <div class='ui-radio ui-first-child'>
+            <label for='takeFromMill'
+              class='ui-btn ui-corner-all ui-btn-icon-left ui-radio-on'>are allowed to remove a piece from an opponent's mill</label>
+            <input name='millremoval' id='takeFromMill'
+              checked='checked' type='radio'>
+          </div>
+          <div class='ui-radio ui-last-child'>
+            <label for='skipRemovalInMills'
+              class='ui-btn ui-corner-all ui-btn-icon-left ui-radio-off'>must skip the capture</label>
+            <input name='millremoval' id='skipRemovalInMills'
+              type='radio'>
+          </div>
+        </div>
+      </fieldset>
+      <i>Mind: Pieces in a mill are protected while the opponent has any other
+        piece. Removable pieces are marked with a red ring.</i><br />
+      <fieldset class='ui-controlgroup ui-controlgroup-vertical ui-corner-all'>
+        <div class='ui-controlgroup-label'>
+          <legend>For available moves of human the target fields are&#8230;</legend>
+        </div>
+        <div class='ui-controlgroup-controls'>
+          <div class='ui-radio ui-first-child'>
+            <label for='showavailablemove'
+              class='ui-btn ui-corner-all ui-btn-icon-left ui-radio-off'>shown</label>
+            <input name='availablemove' id='showavailablemove'
+              type='radio'>
+          </div>
+          <div class='ui-radio ui-last-child'>
+            <label for='hideavailablemove'
+              class='ui-btn ui-corner-all ui-btn-icon-left ui-radio-on'>hidden</label>
+            <input name='availablemove' id='hideavailablemove'
+              checked='checked' type='radio'>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class='ui-controlgroup ui-controlgroup-vertical ui-corner-all'>
+        <div class='ui-controlgroup-label'>
+          <legend>Algebraic board notation is&#8230;</legend>
+        </div>
+        <div class='ui-controlgroup-controls'>
+          <div class='ui-radio ui-first-child'>
+            <label for='showalgebraicnotation'
+              class='ui-btn ui-corner-all ui-btn-icon-left ui-radio-off'>shown</label>
+            <input name='algebraicnotation' id='showalgebraicnotation'
+              type='radio'>
+          </div>
+          <div class='ui-radio ui-last-child'>
+            <label for='hidealgebraicnotation'
+              class='ui-btn ui-corner-all ui-btn-icon-left ui-radio-on'>hidden</label>
+            <input name='algebraicnotation' id='hidealgebraicnotation'
+              checked='checked' type='radio'>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <a href='#game-page' data-rel='back'
+      class='ui-btn ui-btn-c ui-shadow ui-corner-all ui-btn-icon-left ui-icon-check'>Ok</a>
+  </div><!-- /content -->
+</div><!-- /page -->
+
+<div id='about-page' class='ui-page ui-page-theme-b'>
+  <div class='ui-header ui-bar-inherit'>
+    <a href='#game-page' data-rel='back' id='customBackAbout'
+      class='customBack ui-btn ui-icon-custom ui-btn-icon-right ui-btn-icon-notext ui-corner-all ui-btn-left'>Back</a>
+    <h4 class='ui-title'>About Mulino</h4>
+  </div><!-- /header -->
+  <main class='ui-content'>
+    <figure class='author' style='float: right;'>
+      <img src='img/oliver_saar_kastel_staadt_260924.jpg' alt='Portrait of Oliver Merkel' />
+      <figcaption>Oliver Merkel, <a rel='license'
+        href='http://creativecommons.org/licenses/by-nc-nd/4.0'
+        target='_blank'>cc-by-nc-nd 4.0</a>.</figcaption>
+    </figure>
+    <br />
+    <h3>Legal</h3>
+    <p>Copyright (c) 2016-2026<br />
+    <b>@author</b> <em>Oliver Merkel</em>, Merkel(dot) Oliver(at) web(dot) de.<br />
+    All rights reserved.<br />
+    Logos, brands, and trademarks belong to their respective owners.</p>
+    <p>All source code also including code parts written in HMTL, Javascript, CSS is under MIT License.</p>
+    <h4>The MIT License (MIT)</h4>
+    <p>Copyright (c) 2016-2026 Oliver Merkel, Merkel(dot) Oliver(at) web(dot)de</p>
+
+    <p>Permission is hereby granted, free of charge, to any person obtaining a copy of
+    this software and associated documentation files (the &quot;Software&quot;), to deal in
+    the Software without restriction, including without limitation the rights to
+    use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+    the Software, and to permit persons to whom the Software is furnished to do so,
+    subject to the following conditions:</p>
+
+    <p>The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.</p>
+
+    <p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+    FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+    COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+    <p>If not otherwise stated all graphics (independent of its format) are licensed under
+      <br /><a rel='license' href='http://creativecommons.org/licenses/by-nc-sa/4.0'
+      target='_blank'><img alt='Creative Commons License' style='border-width:0'
+      src='img/icons/cc_by_nc_sa.png' /></a><br />
+      <a rel='license' href='http://creativecommons.org/licenses/by-nc-sa/4.0'
+      target='_blank'>Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+      International License</a>.
+    </p>
+
+    <div class='ui-collapsible-set'>
+    <div class='ui-collapsible ui-collapsible-collapsed ui-collapsible-themed-content ui-corner-all ui-first-child'>
+      <h4 class='ui-collapsible-heading'>
+        <a href='#about-principles'
+          class='ui-btn ui-btn-icon-right ui-icon-arrow-l'>Mulino Principles and Concepts</a>
+      </h4>
+      <div id='about-principles'
+        class='ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed'>
+        <p><em>Mulino</em> implements Nine Men's Morris, a two-player deterministic
+          board game.</p>
+        <p>The computer player uses Monte-Carlo Tree Search (MCTS) with UCB
+          (Upper Confidence Bounds) applied to trees (UCT in short). The board game
+          is used for demonstration purposes of the UCT algorithm.</p>
+        <p>The traditional Nine Men's Morris game belongs to the public domain due
+          to its age and unknown author and/or creator.</p>
+      </div>
+    </div><!-- collapsible -->
+    <div class='ui-collapsible ui-collapsible-collapsed ui-collapsible-themed-content ui-corner-all ui-last-child'>
+      <h4 class='ui-collapsible-heading'>
+        <a href='#about-thirdparty'
+          class='ui-btn ui-btn-icon-right ui-icon-arrow-l'>Third Party Code Licenses</a>
+      </h4>
+      <div id='about-thirdparty'
+        class='ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed'>
+        <p>This <b>Mulino</b> implementation runs on <em>plain</em> HTML5,
+        CSS and vanilla JavaScript. It does <em>not</em> use or ship any
+        <em>third party</em> code runtime libraries.</p>
+      </div>
+    </div><!-- collapsible -->
+    </div><!-- collapsible-set -->
+    <a href='#game-page' data-rel='back'
+      class='ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back'>Back</a>
+  </main><!-- /content -->
+</div><!-- /page -->
+</body>
+</html>
